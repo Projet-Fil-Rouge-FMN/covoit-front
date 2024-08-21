@@ -1,0 +1,8 @@
+<h1>UserList</h1>
+<ul>
+    <li>
+        @for(user of users$ | async;track $index){
+            <app-user-item [user]="user"></app-user-item>
+        }
+    </li>
+</ul>
