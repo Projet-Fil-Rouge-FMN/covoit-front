@@ -1,0 +1,8 @@
+<h1>Liste de trajets</h1>
+<ul>
+    <li>
+        @for(route of routes$ | async; track $index){
+        <app-route-item [route]="route"></app-route-item>
+        }
+    </li>
+</ul>
