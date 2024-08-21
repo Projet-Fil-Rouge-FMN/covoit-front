@@ -1,4 +1,5 @@
-import Route from 'route.models';
+import { Route } from './route.model';
+
 export interface Address {
   id: number;
   detail: string;
