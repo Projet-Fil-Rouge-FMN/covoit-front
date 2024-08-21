@@ -1,0 +1,8 @@
+<h1>Liste des marques</h1>
+<ul>
+    <li>
+        @for(brand of brands$ | async; track $index){
+        <app-brand-item [brand]="brand"></app-brand-item>
+        }
+    </li>
+</ul>
