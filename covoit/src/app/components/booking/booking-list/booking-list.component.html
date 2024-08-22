@@ -1,0 +1,9 @@
+<h1>Liste des réservations</h1>
+
+<ul>
+    <li>
+        @for(booking of bookings$ | async; track $index){
+        <app-booking-item [booking]="booking"></app-booking-item>
+        }
+    </li>
+</ul>
