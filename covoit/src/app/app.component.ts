@@ -6,6 +6,7 @@ import { BrandListComponent } from './components/brand/brand-list/brand-list.com
 
 import { RouteListComponent } from './components/route/route-list/route-list.component';
 import { AddressListComponent } from './components/address/address-list/address-list.component';
+import { VehicleListComponent } from "./components/vehicle/vehicle-list/vehicle-list.component";
 
 
 @Component({
@@ -16,7 +17,10 @@ import { AddressListComponent } from './components/address/address-list/address-
     UserListComponent,
     RouteListComponent,
     AddressListComponent,
-  ],
+    VehicleListComponent,
+    BrandListComponent
+    
+],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
