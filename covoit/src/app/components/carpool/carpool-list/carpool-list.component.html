@@ -1,0 +1,9 @@
+<h1> Liste des covoiturages</h1>>
+
+<ul>
+	<li>
+		@for(carpool of carpools$ | async; track $index) {
+			<app-carpool-item [carpool]="carpool"></app-carpool-item>
+		}
+	</li>
+</ul>
