@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { Vehicle } from '../../../models/vehicle.model';
 import { AsyncPipe } from '@angular/common';
 import { VehicleItemComponent } from '../vehicle-item/vehicle-item.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-list',
   standalone: true,
-  imports: [AsyncPipe, VehicleItemComponent],
+  imports: [AsyncPipe, VehicleItemComponent, RouterLink],
   templateUrl: './vehicle-list.component.html',
   styleUrl: './vehicle-list.component.css'
 })
