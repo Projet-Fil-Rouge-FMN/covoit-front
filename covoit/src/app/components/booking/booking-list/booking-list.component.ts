@@ -4,11 +4,12 @@ import { BookingItemComponent } from '../booking-item/booking-item.component';
 import { Observable } from 'rxjs';
 import { Booking } from '../../../models/booking.model';
 import { BookingService } from '../../../services/booking.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-booking-list',
   standalone: true,
-  imports: [AsyncPipe, BookingItemComponent],
+  imports: [AsyncPipe, BookingItemComponent, RouterLink],
   templateUrl: './booking-list.component.html',
   styleUrl: './booking-list.component.css',
 })

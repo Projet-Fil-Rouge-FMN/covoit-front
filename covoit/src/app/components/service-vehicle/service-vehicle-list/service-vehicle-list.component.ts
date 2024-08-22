@@ -4,11 +4,12 @@ import { ServiceVehicleItemComponent } from '../service-vehicle-item/service-veh
 import { Observable } from 'rxjs';
 import { ServiceVehicle } from '../../../models/serviceVehicle.model';
 import { ServiceVehicleService } from '../../../services/service-vehicle.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-service-vehicle-list',
   standalone: true,
-  imports: [AsyncPipe, ServiceVehicleItemComponent],
+  imports: [AsyncPipe, ServiceVehicleItemComponent, RouterLink],
   templateUrl: './service-vehicle-list.component.html',
   styleUrl: './service-vehicle-list.component.css',
 })

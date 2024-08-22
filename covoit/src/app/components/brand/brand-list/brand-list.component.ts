@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { Brand } from '../../../models/brand.model';
 import { BrandService } from '../../../services/brand.service';
 import { BrandItemComponent } from '../brand-item/brand-item.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-brand-list',
   standalone: true,
-  imports: [AsyncPipe, BrandItemComponent],
+  imports: [AsyncPipe, BrandItemComponent, RouterLink],
   templateUrl: './brand-list.component.html',
   styleUrl: './brand-list.component.css',
 })

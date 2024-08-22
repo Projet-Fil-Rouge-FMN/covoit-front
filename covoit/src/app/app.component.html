@@ -1,11 +1,9 @@
+<header>
+  <a [routerLink]="['/user']">User</a>
+  <a [routerLink]="['/vehicle']">Vehicle</a>
+</header>
+
 <main>
-  <app-user-list></app-user-list>
 
- <app-brand-list></app-brand-list>
-
-  <app-route-list></app-route-list>
-  <app-address-list></app-address-list>
-
-  <app-vehicle-list></app-vehicle-list>
   <router-outlet />
 </main>
