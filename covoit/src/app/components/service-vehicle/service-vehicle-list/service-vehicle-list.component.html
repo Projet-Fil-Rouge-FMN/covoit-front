@@ -1,0 +1,8 @@
+<h1>Liste des Véhicules de service</h1>
+<ul>
+    <li>
+        @for(sv of sVs$ | async; track $index){
+        <app-service-vehicle-item [sv]="sv"></app-service-vehicle-item>
+        }
+    </li>
+</ul>
