@@ -1,0 +1,8 @@
+<h1>Liste des modèles</h1>
+<ul>
+    <li>
+        @for(model of models$ | async; track $index){
+        <app-vehicle-model-item [model]="model"></app-vehicle-model-item>
+        }
+    </li>
+</ul>
