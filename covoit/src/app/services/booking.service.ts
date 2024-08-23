@@ -15,6 +15,10 @@ export class BookingService {
     return this.http.get<Booking[]>(this.apiUrl);
   }
 
+  getBookingById(id: number): Observable<Booking> {
+    return this.http.get<Booking>(this.apiUrl + '/' + id);
+  }
+
   addBooking({ id, ...booking }: Booking): Observable<void> {
     const newBooking = {
       ...booking,
