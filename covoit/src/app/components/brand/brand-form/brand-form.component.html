@@ -1,0 +1,12 @@
+<form [formGroup]="brandForm" (ngSubmit)="submit()">
+    <div>
+        <label for="name">
+            Nom :
+        </label>
+        <input id="name" type="text" formControlName="name" />
+    </div>
+    <div>
+        <button type="submit" [disabled]="!brandForm.valid">Envoyer</button>
+    </div>
+
+</form>
