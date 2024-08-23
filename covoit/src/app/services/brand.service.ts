@@ -7,9 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BrandService {
-  private apiUrl = 'http://localhost:8081/brand/';
+  private apiUrl = 'http://localhost:8081/brands/';
+
   constructor(private http: HttpClient) {}
+
   getBrands(): Observable<Brand[]> {
     return this.http.get<Brand[]>(this.apiUrl);
+  }
+
+  addBrand({ id, ...brand }: Brand): Observable<void> {
+    const newBrand = {
+      ...brand,
+    };
+    return this.http.post<void>(this.apiUrl, newBrand);
   }
 }
