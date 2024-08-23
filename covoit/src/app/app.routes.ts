@@ -14,4 +14,5 @@ export const routes: Routes = [
     {path: 'booking', component: BookingListComponent},
     {path: 'add-vehicleModel', component:VehicleModelAddComponent},
     {path: 'auth/login', component: LoginComponent},
+
 ];
