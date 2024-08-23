@@ -1,0 +1,17 @@
+<form [formGroup]="bookingForm" (ngSubmit)="submit()">
+    <div>
+        <label for="startTime">Date/heure de départ :
+        </label>
+        <input id="startTime" type="text" formControlName="startTime" />
+        <label for="endTime">Date/heure de départ :
+        </label>
+        <input id="endTime" type="text" formControlName="endTime" />
+        <label for="startTime">Date/heure de départ :
+        </label>
+        <input id="startTime" type="text" formControlName="startTime" />
+        <!-- Insérer le choix du conducteur ici -->
+    </div>
+    <div>
+        <button type="submit" [disabled]="!bookingForm.valid">Submit</button>
+    </div>
+</form>
