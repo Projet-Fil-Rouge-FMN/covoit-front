@@ -5,6 +5,7 @@ import { ServiceVehicleListComponent } from './components/service-vehicle/servic
 import { RouteListComponent } from './components/route/route-list/route-list.component';
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
 import { VehicleModelAddComponent } from './components/vehicle-model/vehicle-model-add/vehicle-model-add.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 
 export const routes: Routes = [
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'booking', component: BookingListComponent },
   { path: 'add-vehicleModel', component: VehicleModelAddComponent },
   { path: 'add-brand', component: BrandAddComponent },
+  {path: 'auth/login', component: LoginComponent},
 ];
