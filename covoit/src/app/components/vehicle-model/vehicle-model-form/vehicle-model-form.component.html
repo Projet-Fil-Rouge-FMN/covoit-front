@@ -1,0 +1,16 @@
+<form [formGroup]="vehicleModelForm" (ngSubmit)="submit()">
+    <div>
+      <label for="name" 
+        >Name :
+      </label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        />
+    </div>
+    <div>
+      <button type="submit" [disabled]="!vehicleModelForm.valid">Submit</button>
+    </div>
+  </form>
+  

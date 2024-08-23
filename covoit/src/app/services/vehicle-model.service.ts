@@ -7,11 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleModelService {
-  private apiUrl = 'http://localhost:8081/model/';
+  private apiUrl = 'http://localhost:8081/models/';
 
   constructor(private http: HttpClient) {}
 
   getModels(): Observable<VehicleModel[]> {
     return this.http.get<VehicleModel[]>(this.apiUrl);
+  }
+
+  addVehicleModel({id, ...vehicleModel}:VehicleModel):Observable<void> {
+    const newVehicleModel = {
+      ...vehicleModel
+    };
+    return this.http.post<void>(this.apiUrl, newVehicleModel);
   }
 }
