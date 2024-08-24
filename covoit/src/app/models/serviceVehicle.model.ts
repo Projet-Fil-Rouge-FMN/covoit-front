@@ -1,6 +1,7 @@
 import { Brand } from './brand.model';
 import { VehicleModel } from './vehicleModel.model';
 import { Category } from './category.model';
+import { Booking } from './booking.model';
 
 export interface ServiceVehicle {
   id: number;
@@ -13,4 +14,5 @@ export interface ServiceVehicle {
   picture: string;
   motorization: string;
   co2Km: number;
+  bookings: Booking[];
 }

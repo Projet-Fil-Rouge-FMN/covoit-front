@@ -1,3 +1,4 @@
+import { ServiceVehicle } from './serviceVehicle.model';
 import { User } from './user.model';
 
 export interface Booking {
@@ -5,4 +6,5 @@ export interface Booking {
   startTime: string;
   endTime: string;
   driver: User;
+  serviceVehicle: ServiceVehicle;
 }
