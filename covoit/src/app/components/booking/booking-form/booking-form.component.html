@@ -1,18 +1,23 @@
 <form [formGroup]="BookingForm" (ngSubmit)="submit()">
     <div>
-        <label for="startTime">Date/heure de départ :
-        </label>
-        <input id="startTime" type="text" formControlName="startTime" />
-        <label for="endTime">Date/heure de départ :
-        </label>
-        <input id="endTime" type="text" formControlName="endTime" />
-        <label for="startTime">Date/heure de départ :
-        </label>
-        <input id="startTime" type="text" formControlName="startTime" />
-        <label for="driver">Id du conducteur</label>
-        <input id="driver" type="number" formControlName="driver" />
-        <label for="serviceVehicle">Id du vehicule de service</label>
-        <input id="serviceVehicle" type="number" formControlName="serviceVehicle" />
+        <p>
+            <label for="startTime">Date/heure de départ :
+            </label>
+            <input id="startTime" type="text" formControlName="startTime" />
+        </p>
+        <p>
+            <label for="endTime">Date/heure d'arrivée :
+            </label>
+            <input id="endTime" type="text" formControlName="endTime" />
+        </p>
+        <p>
+            <label for="driver">Id du conducteur</label>
+            <input id="driver" type="number" formControlName="driver" />
+        </p>
+        <p>
+            <label for="serviceVehicle">Id du vehicule de service</label>
+            <input id="serviceVehicle" type="number" formControlName="serviceVehicle" />
+        </p>
     </div>
     <div>
         <button type="submit" [disabled]="!BookingForm.valid">Submit</button>
