@@ -14,4 +14,10 @@ export class AddressService {
   getAddresses(): Observable<Address[]> {
     return this.http.get<Address[]>(this.apiUrl);
   }
+  addAddress({ id, ...address }: Address): Observable<void> {
+    const newAddress = {
+      ...address,
+    };
+    return this.http.post<void>(this.apiUrl, newAddress);
+  }
 }

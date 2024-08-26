@@ -1,0 +1,13 @@
+<form [formGroup]="addressForm" (onSubmit)="submit()">
+    <div>
+        <label for="detail">Detail :</label>
+        <input type="text" name="" id="detail" formControlName="detail">
+        <label for="city">City :</label>
+        <input type="text" name="" id="city" formControlName="city">
+        <label for="country">Country :</label>
+        <input type="text" name="country" id="country" formControlName="country">
+    </div>
+    <div>
+        <button type="submit" [disabled]="!addressForm.valid">Send</button>
+    </div>
+</form>
