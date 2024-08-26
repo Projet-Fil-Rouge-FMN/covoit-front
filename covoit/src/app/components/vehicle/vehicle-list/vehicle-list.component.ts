@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [AsyncPipe, VehicleItemComponent, RouterLink],
   templateUrl: './vehicle-list.component.html',
-  styleUrl: './vehicle-list.component.css'
+  styleUrl: './vehicle-list.component.css',
 })
 export class VehicleListComponent {
   vehicle$: Observable<Vehicle[]>;
 
   constructor(private vehicleService: VehicleService) {
-    this.vehicle$ = this.vehicleService.getModels();
+    this.vehicle$ = this.vehicleService.getVehicles();
   }
 }
