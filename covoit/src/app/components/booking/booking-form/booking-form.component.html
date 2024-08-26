@@ -1,4 +1,4 @@
-<form [formGroup]="bookingForm" (ngSubmit)="submit()">
+<form [formGroup]="BookingForm" (ngSubmit)="submit()">
     <div>
         <label for="startTime">Date/heure de départ :
         </label>
@@ -9,9 +9,12 @@
         <label for="startTime">Date/heure de départ :
         </label>
         <input id="startTime" type="text" formControlName="startTime" />
-        <!-- Insérer le choix du conducteur ici -->
+        <label for="driver">Id du conducteur</label>
+        <input id="driver" type="number" formControlName="driver" />
+        <label for="serviceVehicle">Id du vehicule de service</label>
+        <input id="serviceVehicle" type="number" formControlName="serviceVehicle" />
     </div>
     <div>
-        <button type="submit" [disabled]="!bookingForm.valid">Submit</button>
+        <button type="submit" [disabled]="!BookingForm.valid">Submit</button>
     </div>
 </form>

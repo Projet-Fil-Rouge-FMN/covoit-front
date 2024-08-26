@@ -60,7 +60,7 @@ export class BookingFormComponent {
       .subscribe((driver: User) => {
         // Abonnement pour récupérer le serviceVehicle
         this.serviceVehicleService
-          .getServiceVehicleById(this.BookingForm.value.serviceVehicle)
+          .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
           .subscribe((serviceVehicle: ServiceVehicle) => {
             // Création de l'objet booking après avoir obtenu les données
             const booking: Booking = {
