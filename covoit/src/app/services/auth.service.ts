@@ -1,27 +1,34 @@
-import { Injectable } from '@angular/core';
+
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, catchError, throwError } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:8081/auth/login'; // URL de votre endpoint de connexion
+  private loginUrl = 'http://localhost:8081/auth/login'; // URL de connexion
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private httpClient = inject(HttpClient);
+  private router = inject(Router);
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.loginUrl, { username, password });
-  }
+  login(data: { username: string, password: string }) {
+    return this.httpClient.post(`${this.loginUrl}`, data)
+      .pipe(tap((result) => {
+        localStorage.setItem('authUser', JSON.stringify(result));
+      }));
+}
+
+
 
   // Méthode pour vérifier si l'utilisateur est authentifié
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('user');
+  isAuthenticated() {
+    return localStorage.getItem('authUser') !== null;
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('authUser');
     this.router.navigate(['/']); // Rediriger vers la page d'accueil après la déconnexion
   }
 }
