@@ -8,7 +8,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { AddressAddComponent } from './components/address/address-add/address-add.component';
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
-import { BookingAddComponent } from './components/booking/booking-add/booking-add.component';
+import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 
 export const routes: Routes = [
   { path: 'user', component: UserListComponent },
@@ -17,8 +17,8 @@ export const routes: Routes = [
   { path: 'route', component: RouteListComponent },
   { path: 'booking', component: BookingListComponent },
   { path: 'add-vehicleModel', component: VehicleModelAddComponent },
+  { path: 'brands', component: BrandListComponent },
   { path: 'add-brand', component: BrandAddComponent },
-  { path: 'add-booking', component: BookingAddComponent },
   { path: 'add-address', component: AddressAddComponent },
   { path: 'login', component: LoginComponent },
 ];
