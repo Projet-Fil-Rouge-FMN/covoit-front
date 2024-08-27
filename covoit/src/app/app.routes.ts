@@ -8,6 +8,7 @@ import { VehicleModelAddComponent } from './components/vehicle-model/vehicle-mod
 import { LoginComponent } from './components/auth/login/login.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { AddressAddComponent } from './components/address/address-add/address-add.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 import { AddressListComponent } from './components/address/address-list/address-list.component';
 
@@ -23,4 +24,5 @@ export const routes: Routes = [
   { path: 'address', component: AddressListComponent },
   { path: 'add-address', component: AddressAddComponent },
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserFormComponent},
 ];

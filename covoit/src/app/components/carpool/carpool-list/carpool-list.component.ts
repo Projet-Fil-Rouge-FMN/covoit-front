@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import  { CarpoolItemComponent } from '../carpool-item/carpool-item.component';
-import { Carpool } from '../../models/carpool.model';
+import { Carpool } from '../../../models/carpool.model';
 import { CarpoolService } from '../../../services/carpool.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class CarpoolListComponent {
 	carpools$: Observable<Carpool[]>;
-	
+
 	constructor(private carpoolService: CarpoolService) {
 		this.carpools$ = this.carpoolService.getCarpools();
 	}
