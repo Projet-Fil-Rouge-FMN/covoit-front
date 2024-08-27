@@ -8,7 +8,7 @@ import { log } from 'node:console';
   providedIn: 'root',
 })
 export class AddressService {
-  private apiUrl = 'http://localhost:8081/address/';
+  private apiUrl = 'http://localhost:8081/address';
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +20,7 @@ export class AddressService {
       ...address,
     };
     console.log("try to add address");
+    console.log(newAddress)
     return this.http.post<void>(this.apiUrl, newAddress);
   }
 }
