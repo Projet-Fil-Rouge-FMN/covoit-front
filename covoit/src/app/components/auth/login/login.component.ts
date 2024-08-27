@@ -34,13 +34,11 @@ export class LoginComponent {
         password: this.loginForm.get('password')?.value ?? ''
       };
 
-      console.log(loginData);
       this.authService.login(loginData)
         .subscribe((data: any) => {
           if(this.authService.isAuthenticated()){
-            this.router.navigate(['/user']);
+            this.router.navigate(['/']);
           }
-          console.log(data);
         });
     }
   }
