@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Address } from '../models/address.model';
+import { log } from 'node:console';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class AddressService {
     const newAddress = {
       ...address,
     };
+    console.log("try to add address");
     return this.http.post<void>(this.apiUrl, newAddress);
   }
 }
