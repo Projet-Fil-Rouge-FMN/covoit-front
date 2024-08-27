@@ -5,5 +5,4 @@ export interface Address {
   detail: string;
   city: string;
   country: string;
-  routes: Route[];
 }
