@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BrandService {
-  private apiUrl = 'http://localhost:8081/brands/';
+  private apiUrl = 'http://localhost:8081/brands';
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +19,7 @@ export class BrandService {
     const newBrand = {
       ...brand,
     };
+    console.log(newBrand)
     return this.http.post<void>(this.apiUrl, newBrand);
   }
 }
