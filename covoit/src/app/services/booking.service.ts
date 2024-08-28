@@ -7,11 +7,22 @@ import { Booking } from '../models/booking.model';
   providedIn: 'root',
 })
 export class BookingService {
-  private apiUrl = 'http://localhost:8081/booking/';
+  private apiUrl = 'http://localhost:8081/bookings/';
 
   constructor(private http: HttpClient) {}
 
   getBookings(): Observable<Booking[]> {
     return this.http.get<Booking[]>(this.apiUrl);
+  }
+
+  getBookingById(id: number): Observable<Booking> {
+    return this.http.get<Booking>(this.apiUrl + '/' + id);
+  }
+
+  addBooking({ id, ...booking }: Booking): Observable<void> {
+    const newBooking = {
+      ...booking,
+    };
+    return this.http.post<void>(this.apiUrl, newBooking);
   }
 }

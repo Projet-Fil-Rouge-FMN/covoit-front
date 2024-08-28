@@ -14,5 +14,4 @@ export interface ServiceVehicle {
   picture: string;
   motorization: string;
   co2Km: number;
-  bookings: Booking[];
 }

@@ -16,7 +16,7 @@ export class ServiceVehicleService {
     return this.http.get<ServiceVehicle[]>(this.apiUrl);
   }
 
-  getUserById(id: Number): Observable<ServiceVehicle> {
+  getServiceVehicleById(id: Number): Observable<ServiceVehicle> {
     return this.http.get<ServiceVehicle>(this.apiUrl + '/' + id);
   }
 }
