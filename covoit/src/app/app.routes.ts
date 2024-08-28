@@ -8,6 +8,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { AddressAddComponent } from './components/address/address-add/address-add.component';
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 
 export const routes: Routes = [
@@ -20,5 +21,7 @@ export const routes: Routes = [
   { path: 'brands', component: BrandListComponent },
   { path: 'add-brand', component: BrandAddComponent },
   { path: 'add-address', component: AddressAddComponent },
-  { path: 'login', component: LoginComponent },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserFormComponent},
+
 ];

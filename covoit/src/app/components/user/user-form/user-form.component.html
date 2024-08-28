@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Register User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input id="id" formControlName="id" type="number" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <input id="userName" formControlName="userName" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" formControlName="lastName" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" class="form-control">
+    </div>
+    <div class="form-group form-check">
+      <input id="driverLicence" formControlName="driverLicence" type="checkbox" class="form-check-input">
+      <label for="driverLicence" class="form-check-label">Driver Licence</label>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="carpools">Carpools:</label>
+      <textarea id="carpools" formControlName="carpools" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input id="role" formControlName="role" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
