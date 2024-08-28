@@ -5,7 +5,6 @@ import { AuthInterceptor } from './services/AuthInterceptor.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
   imports: [
     RouterOutlet, RouterLink],
     providers: [
