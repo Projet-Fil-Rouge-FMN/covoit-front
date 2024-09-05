@@ -8,6 +8,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { AddressAddComponent } from './components/address/address-add/address-add.component';
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 import { BookingAddComponent } from './components/booking/booking-add/booking-add.component';
 
@@ -21,6 +22,12 @@ export const routes: Routes = [
   { path: 'brands', component: BrandListComponent },
   { path: 'add-brand', component: BrandAddComponent },
   { path: 'add-address', component: AddressAddComponent },
+<<<<<<< HEAD
   { path: 'add-booking', component: BookingAddComponent },
   { path: 'login', component: LoginComponent },
+=======
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserFormComponent},
+
+>>>>>>> 8f13325e2d5ece4192ce92bf852867da83a3c68f
 ];
