@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     tools {
-        jdk 'java'
         maven 'Maven 3.9.9'
     }
 
@@ -25,25 +24,6 @@ pipeline {
             steps {
                 // Running tests with Maven.
                 sh 'mvn test'
-            }
-            post {
-                always {
-                    // Collecting test results.
-                    junit '**/target/surefire-reports/*.xml'
-                }
-            }
-        }
-
-        stage('Code Coverage') {
-            steps {
-                // Running JaCoCo for code coverage.
-                sh 'mvn jacoco:report'
-            }
-            post {
-                always {
-                    // Archiving the code coverage report.
-                    jacoco execPattern: '**/target/jacoco.exec'
-                }
             }
         }
 
