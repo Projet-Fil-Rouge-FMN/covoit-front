@@ -1,13 +1,19 @@
 <form [formGroup]="addressForm" (ngSubmit)="submit()">
     <div>
-        <label for="detail">Detail :</label>
-        <input type="text" name="" id="detail" formControlName="detail">
-        <label for="city">City :</label>
-        <input type="text" name="" id="city" formControlName="city">
-        <label for="country">Country :</label>
-        <input type="text" name="country" id="country" formControlName="country">
-    </div>
-    <div>
-        <button type="submit" [disabled]="!addressForm.valid">Send</button>
+        <div class="m-2 d-flex justify-content-evenly">
+            <label for="detail" class="m-1 w-50">Detail :</label>
+            <input type="text" class="m-1 w-50" name="" id="detail" formControlName="detail">
+        </div>
+        <div class="m-2 d-flex justify-content-evenly">
+            <label for="city" class="m-1 w-50">City :</label>
+            <input class="m-1 w-50" type="text" name="" id="city" formControlName="city">
+        </div>
+        <div class="m-2 d-flex justify-content-evenly">
+            <label class="m-1 w-50" for="country">Country :</label>
+            <input class="m-1 w-50" type="text" name="country" id="country" formControlName="country">
+        </div>
+        <div class="m-2 d-flex justify-content-center">
+            <button class="btn btn-info custom-disabled" type="submit" [disabled]="!addressForm.valid">Send</button>
+        </div>
     </div>
 </form>

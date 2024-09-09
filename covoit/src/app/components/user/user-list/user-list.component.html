@@ -1,8 +1,12 @@
-<h1>UserList</h1>
-<ul>
-    <li>
-        @for(user of users$ | async;track $index){
+<div class="d-flex justify-content-center">
+    <h1 class="m-5">Liste des utilisateurs</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <ul class="m-1">
+        <li>
+            @for(user of users$ | async;track $index){
             <app-user-item [user]="user"></app-user-item>
-        }
-    </li>
-</ul>
+            }
+        </li>
+    </ul>
+</div>
