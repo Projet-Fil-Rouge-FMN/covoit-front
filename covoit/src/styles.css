@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+ul li {
+    list-style: none;
+}
+
+.custom-disabled[disabled] {
+    opacity: 1;
+    /* Maintient l'opacité normale */
+    background-color: #17a2b8;
+    /* Maintient la couleur d'origine */
+    cursor: not-allowed;
+    /* Indique visuellement que le bouton est désactivé */
+    pointer-events: none;
+    /* Désactive les interactions sans changer l'apparence */
+}

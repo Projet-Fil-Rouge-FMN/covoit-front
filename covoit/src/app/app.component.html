@@ -1,17 +1,57 @@
-<header>
-  <nav>
-    <a [routerLink]="['/user']">User | </a>
-    <a [routerLink]="['/vehicle']">Vehicle | </a>
-    <a [routerLink]="['/address']">Address | </a>
-    <a [routerLink]="['/booking']">Booking | </a>
-    <br>
-    <a [routerLink]="['/add-vehicleModel']">Add VehicleModel | </a>
-    <a [routerLink]="['/add-brand']">Add Brand | </a>
-    <a [routerLink]="['/add-address']">Add Address | </a>
-    <a [routerLink]="['/add-booking']">Add Booking | </a>
-    <a [routerLink]="['/login']">Login </a>
-  </nav>
-
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Gestion des transports</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Utilisateurs </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/user']" class="dropdown-item">Liste des utilisateurs</a></li>
+            <li><a class="dropdown-item disabled">Ajouter un utilisateur</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Véhicules </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/vehicle']" class="dropdown-item">Liste des véhicules</a></li>
+            <li><a class="dropdown-item disabled">Ajouter un véhicule</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Adresses </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/address']" class="dropdown-item disabled">Liste des adresses</a></li>
+            <li><a [routerLink]="['/add-address']" class="dropdown-item">Ajouter une adresse </a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/add-vehicleModel']" class="nav-link">Ajouter un modèle de véhicule</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/add-brand']" class="nav-link">Ajouter une marque de véhicule</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/login']" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Covoiturages </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/booking']" class="dropdown-item">Liste des covoiturages</a></li>
+            <li><a [routerLink]="['/add-booking']" class="dropdown-item">Ajouter un covoiturage </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 </header>
 
 <main>

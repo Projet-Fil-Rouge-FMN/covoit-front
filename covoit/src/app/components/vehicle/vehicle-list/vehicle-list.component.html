@@ -1,9 +1,12 @@
-<h1>Liste des vehicle</h1>
-<ul>
-    <li>
-        @for(vehicle of vehicle$ | async; track $index){
-        <app-vehicle-item [vehicle]="vehicle"></app-vehicle-item>
-        }
-    </li>
-</ul>
-
+<div class="d-flex justify-content-center">
+    <h1 class="m-5">Liste des vehicules</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <ul class="m-1">
+        <li>
+            @for(vehicle of vehicle$ | async; track $index){
+            <app-vehicle-item [vehicle]="vehicle"></app-vehicle-item>
+            }
+        </li>
+    </ul>
+</div>
