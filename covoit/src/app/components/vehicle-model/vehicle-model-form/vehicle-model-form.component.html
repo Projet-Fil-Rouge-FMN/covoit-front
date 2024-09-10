@@ -1,16 +1,11 @@
 <form [formGroup]="vehicleModelForm" (ngSubmit)="submit()">
-    <div>
-      <label for="name" 
-        >Name :
-      </label>
-      <input
-        id="name"
-        type="text"
-        formControlName="name"
-        />
-    </div>
-    <div>
-      <button type="submit" [disabled]="!vehicleModelForm.valid">Submit</button>
-    </div>
-  </form>
-  
+  <div>
+    <div class="m-2 d-flex justify-content-evenly"></div>
+    <label for="name" class="m-1">Nom :
+    </label>
+    <input id="name" type="text" formControlName="name" class="m-1 w-50" />
+  </div>
+  <div class="m-2 d-flex justify-content-center">
+    <button class="btn btn-info custom-disabled" type="submit" [disabled]="!vehicleModelForm.valid">Submit</button>
+  </div>
+</form>
