@@ -23,6 +23,7 @@ export const routes: Routes = [
   { path: 'add-address', component: AddressAddComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserFormComponent},
-  { path: 'user/delete/:id', component: UserDeleteComponent }
+  { path: 'user/delete/:id', component: UserDeleteComponent },
+  {path: 'logout', redirectTo: '/', pathMatch: 'full'}
 
 ];

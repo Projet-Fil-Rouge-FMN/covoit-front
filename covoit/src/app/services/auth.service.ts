@@ -9,46 +9,40 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
-  private router = inject(Router);
-  login(data: {username: String,password: String}): Observable<any> {
+  constructor(private http: HttpClient, private router: Router) {}
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-XSRF-TOKEN': this.getCsrfToken() // Assure-toi d'ajouter le jeton CSRF ici
-    });
-
-    return this.http.post<any>('http://localhost:8081/auth/login', data, { headers });
+  login(data: { username: string; password: string }): Observable<any> {
+    return this.http.post<any>('http://localhost:8081/auth/login', data)
+      .pipe(
+        tap(response => {
+          if (response.token) {
+            // Stocker le token dans le localStorage
+            localStorage.setItem('token', response.token);
+          }
+        }),
+        catchError(error => {
+          console.error('Login error', error);
+          // Optionnel: Afficher un message d'erreur ou faire quelque chose d'autre
+          return of(null);
+        }),
+        tap(response => {
+          if (response) {
+            // Rediriger l'utilisateur après une connexion réussie
+            this.router.navigate(['/user/']);
+          }
+        })
+      );
   }
 
-  private getCsrfToken(): string {
-    // Lire le jeton CSRF depuis le cookie ou autre source
-    return this.getCookie('XSRF-TOKEN') || '';
-  }
 
-  private getCookie(name: string): string | null {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift() || '';
-    return null;
-  }
-
-
-  // Méthode pour vérifier si l'utilisateur est authentifié
-  isAuthenticated() {
-    const authUser = localStorage.getItem('authUser');
-    if (authUser) {
-      const user = JSON.parse(authUser);
-      // Vérifier si l'utilisateur a un jeton d'accès
-      return true;
-    }
-    // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
-    return  this.router.navigate(['/login']);
-  }
 
   logout() {
-    localStorage.removeItem('authUser');
-    this.router.navigate(['/']); // Rediriger vers la page d'accueil après la déconnexion
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/']); // Rediriger vers la page de connexion
   }
-  
+
+  isAuthenticated(): boolean {
+    // Vérifier la présence du token pour déterminer si l'utilisateur est authentifié
+    return !!localStorage.getItem('token');
+  }
 }

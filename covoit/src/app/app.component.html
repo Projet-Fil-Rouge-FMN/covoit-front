@@ -12,8 +12,9 @@
             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Utilisateurs </a>
             <ul class="dropdown-menu">
-              <li><a [routerLink]="['/user']" class="dropdown-item">Liste des utilisateurs</a></li>
-              <li><a class="dropdown-item disabled">Ajouter un utilisateur</a></li>
+              <li><a [routerLink]="['/user/']" class="dropdown-item">Liste des utilisateurs</a></li>
+              <li><a [routerLink]="['register']"class="dropdown-item ">Ajouter un utilisateur</a></li>
+
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -41,8 +42,13 @@
           <li class="nav-item">
             <a [routerLink]="['/login']" class="nav-link">Login</a>
           </li>
+          <li class="nav-item">
+            <a [routerLink]="['/logout']" class="nav-link">Logout</a>
+          </li>
         </ul>
+
       </div>
+
     </div>
   </nav>
 </header>

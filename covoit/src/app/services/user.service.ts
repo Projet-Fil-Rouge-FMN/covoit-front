@@ -13,7 +13,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl).pipe(
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // Ajoutez d'autres en-têtes si nécessaire
+      })
+    };
+    return this.http.get<User[]>(this.apiUrl, options).pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des utilisateurs', error);
         return of([]); // Retourner un tableau vide en cas d'erreur
