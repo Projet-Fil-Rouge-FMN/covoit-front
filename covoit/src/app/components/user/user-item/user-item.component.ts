@@ -11,4 +11,5 @@ import { User } from '../../../models/user.model';
 export class UserItemComponent {
   @Input() user!:User;
   constructor(){};
+  
 }

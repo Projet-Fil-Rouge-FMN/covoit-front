@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -37,5 +37,19 @@ export class UserService {
         return of(null); // Retourner null en cas d'erreur
       })
     );
+  }
+
+  deleteUser(id: number): Observable<any> {
+    const url = `${this.apiUrl}delete/${id}`;
+    console.log('Deleting user at URL:', url);
+
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // Ajoutez d'autres en-têtes si nécessaire
+      })
+    };
+
+    return this.http.delete(url, options);
   }
 }

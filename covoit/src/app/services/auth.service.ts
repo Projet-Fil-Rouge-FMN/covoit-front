@@ -1,34 +1,37 @@
 
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:8081/auth/login'; // URL de connexion
-
-  private httpClient = inject(HttpClient);
+  constructor(private http: HttpClient) {}
   private router = inject(Router);
+  login(data: {username: String,password: String}): Observable<any> {
 
-  login(data: { username: string, password: string }) {
-    return this.httpClient.post(`${this.loginUrl}`, data)
-      .pipe(
-        tap((result) => {
-          localStorage.setItem('authUser', JSON.stringify(result));
-          this.router.navigate(['/dashboard']); // Redirige vers la page d'accueil ou le tableau de bord
-        }),
-        catchError((error) => {
-          console.error('Login failed', error);
-          return of(null);
-        })
-      );
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-XSRF-TOKEN': this.getCsrfToken() // Assure-toi d'ajouter le jeton CSRF ici
+    });
+
+    return this.http.post<any>('http://localhost:8081/auth/login', data, { headers });
   }
 
+  private getCsrfToken(): string {
+    // Lire le jeton CSRF depuis le cookie ou autre source
+    return this.getCookie('XSRF-TOKEN') || '';
+  }
 
+  private getCookie(name: string): string | null {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || '';
+    return null;
+  }
 
 
   // Méthode pour vérifier si l'utilisateur est authentifié
@@ -47,4 +50,5 @@ export class AuthService {
     localStorage.removeItem('authUser');
     this.router.navigate(['/']); // Rediriger vers la page d'accueil après la déconnexion
   }
+  
 }

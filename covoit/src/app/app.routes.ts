@@ -10,7 +10,7 @@ import { AddressAddComponent } from './components/address/address-add/address-ad
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
-
+import { UserDeleteComponent } from './components/user-delete-component/user-delete-component.component';
 export const routes: Routes = [
   { path: 'user', component: UserListComponent },
   { path: 'vehicle', component: VehicleListComponent },
@@ -23,5 +23,6 @@ export const routes: Routes = [
   { path: 'add-address', component: AddressAddComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserFormComponent},
+  { path: 'user/delete/:id', component: UserDeleteComponent }
 
 ];

@@ -5,7 +5,7 @@ import { UserService } from '../../../services/user.service';
 import { AsyncPipe } from '@angular/common';
 import { UserItemComponent } from '../user-item/user-item.component';
 import { RouterLink } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -16,8 +16,10 @@ import { RouterLink } from '@angular/router';
 export class UserListComponent {
   users$: Observable<User[]>;
 
-  constructor(private userService: UserService){
+  constructor(private userService: UserService, private router: Router){
     this.users$ = this.userService.getUsers();
   }
-
+  goToDeletePage(id: number): void {
+    this.router.navigate(['/user/delete', id]);
+  }
 }

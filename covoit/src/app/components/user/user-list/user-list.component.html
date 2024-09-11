@@ -6,7 +6,8 @@
         <li>
             @for(user of users$ | async;track $index){
             <app-user-item [user]="user"></app-user-item>
-            }
+
+            <button (click)="goToDeletePage(user.id)">Delete</button>}
         </li>
     </ul>
 </div>
