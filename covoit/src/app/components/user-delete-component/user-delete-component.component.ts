@@ -57,7 +57,7 @@ export class UserDeleteComponent implements OnInit {
       this.userService.deleteUser(this.userId).pipe(
         tap(response => {
           console.log('Deletion successful:', response);
-          this.router.navigate(['/users']);
+          this.router.navigate(['/user']);
         }),
         catchError(error => {
           console.error('Error deleting user:', error);
