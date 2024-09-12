@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8081/user/';
+  private apiUrl = environment.apiURL+"/user";
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +20,7 @@ export class UserService {
         // Ajoutez d'autres en-têtes si nécessaire
       })
     };
-    return this.http.get<User[]>(this.apiUrl, options).pipe(
+    return this.http.get<User[]>(this.apiUrl+"/", options).pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des utilisateurs', error);
         return of([]); // Retourner un tableau vide en cas d'erreur

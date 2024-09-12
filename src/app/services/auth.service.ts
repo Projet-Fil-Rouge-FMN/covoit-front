@@ -4,15 +4,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  private apiUrl = environment.apiURL+'/auth';
 
+  constructor(private http: HttpClient, private router: Router) {}
   login(data: { username: string; password: string }): Observable<any> {
-    return this.http.post<any>('http://localhost:8081/auth/login', data)
+    return this.http.post<any>(this.apiUrl+'/auth/login', data)
       .pipe(
         tap(response => {
           if (response.token) {

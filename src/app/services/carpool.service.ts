@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Carpool } from '../models/carpool.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
 	providedIn: 'root',
 })
 
 export class CarpoolService {
-	private apiUrl = 'http://localhost:8081/carpool/';
+	private apiUrl = environment.apiURL+"/carpools";
 	
 	constructor(private http: HttpClient) {}
 	
