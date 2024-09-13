@@ -58,6 +58,7 @@ export class BookingFormComponent {
     this.userService
       .getUserById(this.BookingForm.value.driver!)
       .subscribe((driver: User | null) => {
+<<<<<<< HEAD
         if (driver === null) {
           // Gérer le cas où driver est null
           driver = {
@@ -99,10 +100,32 @@ export class BookingFormComponent {
               driver: driver, // Utiliser le driver trouvé ou par défaut
               serviceVehicle: serviceVehicle, // Utiliser le serviceVehicle trouvé ou par défaut
             };
+=======
+        if (driver) {
+          // Le driver est bien un utilisateur valide
+          this.serviceVehicleService
+            .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
+            .subscribe((serviceVehicle: ServiceVehicle | null) => {
+              if (serviceVehicle) {
+                // Si le serviceVehicle est valide
+                const booking: Booking = {
+                  id: this.defautBooking?.id || 0,
+                  startTime: this.BookingForm.value.startTime || '',
+                  endTime: this.BookingForm.value.endTime || '',
+                  driver: driver, // On utilise le driver récupéré
+                  serviceVehicle: serviceVehicle, // On utilise le serviceVehicle récupéré
+                };
+>>>>>>> 98b2490b01b321c1b1ee977cefe207c0728e7ee0
 
-            // Émission de l'événement onSubmit avec le booking
-            this.onSubmit.emit(booking);
-          });
+                // Émission de l'événement onSubmit avec le booking
+                this.onSubmit.emit(booking);
+              } else {
+                console.error('Service vehicle not found');
+              }
+            });
+        } else {
+          console.error('User not found');
+        }
       });
   }
 }
