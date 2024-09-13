@@ -58,49 +58,6 @@ export class BookingFormComponent {
     this.userService
       .getUserById(this.BookingForm.value.driver!)
       .subscribe((driver: User | null) => {
-<<<<<<< HEAD
-        if (driver === null) {
-          // Gérer le cas où driver est null
-          driver = {
-            id: 0,
-            userName: 'Default Name',
-            lastName: 'string',
-            password: 'string',
-            email: 'string',
-            driverLicence: false,
-            authorities: [''],
-          }; // Utiliser un objet User par défaut
-        }
-
-        // Abonnement pour récupérer le serviceVehicle
-        this.serviceVehicleService
-          .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
-          .subscribe((serviceVehicle: ServiceVehicle | null) => {
-            if (serviceVehicle === null) {
-              // Gérer le cas où serviceVehicle est null
-              serviceVehicle = {
-                id: 0,
-                registration: '',
-                nbSeat: 0,
-                brand: { id: 0, name: '' },
-                model: { id: 0, name: '' },
-                category: { id: 0, name: '' },
-                state: '',
-                picture: '',
-                motorization: '',
-                co2Km: 0,
-              }; // Utiliser un objet ServiceVehicle par défaut
-            }
-
-            // Création de l'objet booking après avoir obtenu les données
-            const booking: Booking = {
-              id: this.defautBooking?.id || 0,
-              startTime: this.BookingForm.value.startTime || '',
-              endTime: this.BookingForm.value.endTime || '',
-              driver: driver, // Utiliser le driver trouvé ou par défaut
-              serviceVehicle: serviceVehicle, // Utiliser le serviceVehicle trouvé ou par défaut
-            };
-=======
         if (driver) {
           // Le driver est bien un utilisateur valide
           this.serviceVehicleService
@@ -115,7 +72,6 @@ export class BookingFormComponent {
                   driver: driver, // On utilise le driver récupéré
                   serviceVehicle: serviceVehicle, // On utilise le serviceVehicle récupéré
                 };
->>>>>>> 98b2490b01b321c1b1ee977cefe207c0728e7ee0
 
                 // Émission de l'événement onSubmit avec le booking
                 this.onSubmit.emit(booking);

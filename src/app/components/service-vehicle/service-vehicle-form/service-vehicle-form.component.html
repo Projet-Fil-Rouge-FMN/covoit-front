@@ -1,1 +1,48 @@
-<p>service-vehicle-form works!</p>
+<form [formGroup]="ServiceVehicle" (ngSubmit)="submit()"></form>
+<div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="registration" class="m-1 w-50">Immatriculation :
+        </label>
+        <input id="registration" class="m-1 w-50" type="text" formControlName="registration" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="nbSeat" class="m-1 w-50">Nombre de sièges :
+        </label>
+        <input id="nbSeat" class="m-1 w-50" type="number" formControlName="nbSeat" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="brand" class="m-1 w-50">Id de la marque : </label>
+        <input id="brand" class="m-1 w-50" type="number" formControlName="brand" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="model" class="m-1 w-50">Id du modèle : </label>
+        <input id="model" class="m-1 w-50" type="number" formControlName="model" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="category" class="m-1 w-50">Id du modèle : </label>
+        <input id="category" class="m-1 w-50" type="number" formControlName="category" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="state" class="m-1 w-50">Etat du véhicule :
+        </label>
+        <input id="state" class="m-1 w-50" type="text" formControlName="state" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly">
+        <label for="picture" class="m-1 w-50">URL de la photo du véhicule :
+        </label>
+        <input id="picture" class="m-1 w-50" type="text" formControlName="picture" />
+    </div>
+    <div class="m-2 d-flex justify-content-evenly"></div>
+    <label for="motorization" class="m-1 w-50">Type de moteur :
+    </label>
+    <input id="motorization" class="m-1 w-50" type="text" formControlName="motorization" />
+</div>
+<div class="m-2 d-flex justify-content-evenly"></div>
+<label for="co2Km" class="m-1 w-50">CO² produit par km : </label>
+<input id="co2Km" class="m-1 w-50" type="number" formControlName="co2Km" />
+</div>
+</div>
+<div class="m-2 d-flex justify-content-center">
+    <button type="submit" class="btn btn-info custom-disabled" [disabled]="!ServiceVehicleForm.valid">Submit</button>
+</div>
+</form>
