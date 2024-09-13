@@ -17,13 +17,13 @@ export class UserService {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // Ajoutez d'autres en-têtes si nécessaire
+      
       })
     };
-    return this.http.get<User[]>(this.apiUrl, options).pipe(
+    return this.http.get<User[]>(this.apiUrl+"/", options).pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des utilisateurs', error);
-        return of([]); // Retourner un tableau vide en cas d'erreur
+        return of([]);
       })
     );
   }
@@ -32,7 +32,7 @@ export class UserService {
     return this.http.get<User>(`${this.apiUrl}${id}`).pipe(
       catchError(error => {
         console.error(`Erreur lors de la récupération de l'utilisateur avec ID ${id}`, error);
-        return of(null); // Retourner null en cas d'erreur
+        return of(null);
       })
     );
   }
@@ -41,13 +41,20 @@ export class UserService {
     return this.http.post<User>(`${this.apiUrl}/register`, user).pipe(
       catchError(error => {
         console.error('Erreur lors de l\'inscription de l\'utilisateur', error);
-        return of(null); // Retourner null en cas d'erreur
+        return of(null);
       })
     );
   }
 
-  deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${userId}`).pipe(
+  deleteUser(Id: number): Observable<void> {
+    const url = `${this.apiUrl}/${Id}`;
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.http.delete<void>(url, options).pipe(
       catchError(error => {
         console.error('Error deleting user', error);
         return throwError(() => new Error('Failed to delete user.'));
