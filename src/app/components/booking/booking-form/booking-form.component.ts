@@ -57,18 +57,27 @@ export class BookingFormComponent {
     // Abonnement pour récupérer le driver
     this.userService
       .getUserById(this.BookingForm.value.driver!)
-      .subscribe((driver: User) => {
+      .subscribe((driver: User | null) => {
+        if (driver === null) {
+          // Gérer le cas où driver est null
+          driver = {
+            id: 0,
+            userName: 'Default Name',
+            lastName: 'string',
+            password: 'string',
+            email: 'string',
+            driverLicence: false,
+            authorities: [''],
+          }; // Utiliser un objet User par défaut
+        }
+
         // Abonnement pour récupérer le serviceVehicle
         this.serviceVehicleService
           .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
-          .subscribe((serviceVehicle: ServiceVehicle) => {
-            // Création de l'objet booking après avoir obtenu les données
-            const booking: Booking = {
-              id: this.defautBooking?.id || 0,
-              startTime: this.BookingForm.value.startTime || '',
-              endTime: this.BookingForm.value.endTime || '',
-              driver: driver || { id: 0, name: 'Default Name' },
-              serviceVehicle: serviceVehicle || {
+          .subscribe((serviceVehicle: ServiceVehicle | null) => {
+            if (serviceVehicle === null) {
+              // Gérer le cas où serviceVehicle est null
+              serviceVehicle = {
                 id: 0,
                 registration: '',
                 nbSeat: 0,
@@ -79,7 +88,16 @@ export class BookingFormComponent {
                 picture: '',
                 motorization: '',
                 co2Km: 0,
-              },
+              }; // Utiliser un objet ServiceVehicle par défaut
+            }
+
+            // Création de l'objet booking après avoir obtenu les données
+            const booking: Booking = {
+              id: this.defautBooking?.id || 0,
+              startTime: this.BookingForm.value.startTime || '',
+              endTime: this.BookingForm.value.endTime || '',
+              driver: driver, // Utiliser le driver trouvé ou par défaut
+              serviceVehicle: serviceVehicle, // Utiliser le serviceVehicle trouvé ou par défaut
             };
 
             // Émission de l'événement onSubmit avec le booking
