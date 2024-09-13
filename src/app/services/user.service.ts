@@ -20,7 +20,7 @@ export class UserService {
       
       })
     };
-    return this.http.get<User[]>(this.apiUrl+"/", options).pipe(
+    return this.http.get<User[]>(this.apiUrl, options).pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des utilisateurs', error);
         return of([]);
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<User | null> {
-    return this.http.get<User>(`${this.apiUrl}${id}`).pipe(
+    return this.http.get<User>(`${this.apiUrl}/${id}`).pipe(
       catchError(error => {
         console.error(`Erreur lors de la récupération de l'utilisateur avec ID ${id}`, error);
         return of(null);
