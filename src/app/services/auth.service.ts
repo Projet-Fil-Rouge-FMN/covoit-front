@@ -24,7 +24,6 @@ export class AuthService {
         }),
         catchError(error => {
           console.error('Login error', error);
-          // Optionnel: Afficher un message d'erreur ou faire quelque chose d'autre
           return of(null);
         }),
         tap(response => {
@@ -40,7 +39,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/user/']); // Rediriger vers la page de connexion
+    this.router.navigate(['/login']); // Rediriger vers la page de connexion
   }
 
   isAuthenticated(): boolean {
