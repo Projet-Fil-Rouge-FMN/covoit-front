@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Ajoutez l'intercepteur ici
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } 
   ]
 };

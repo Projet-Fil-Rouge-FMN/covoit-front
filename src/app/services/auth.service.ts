@@ -10,40 +10,59 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.apiURL+'/auth';
+  private apiUrl = `${environment.apiURL}/auth`;
 
   constructor(private http: HttpClient, private router: Router) {}
+
   login(data: { username: string; password: string }): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'/login', data)
+    return this.http.post<any>(`${this.apiUrl}/login`, data)
       .pipe(
         tap(response => {
+          console.log('Réponse de connexion:', response); // Ajouter ce log
           if (response.token) {
-            // Stocker le token dans le localStorage
             localStorage.setItem('token', response.token);
           }
         }),
         catchError(error => {
-          console.error('Login error', error);
+          console.error('Erreur lors de la connexion', error);
           return of(null);
         }),
         tap(response => {
           if (response) {
-            // Rediriger l'utilisateur après une connexion réussie
             this.router.navigate(['/user/']);
           }
         })
       );
   }
 
-
-
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']); // Rediriger vers la page de connexion
+    this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
-    // Vérifier la présence du token pour déterminer si l'utilisateur est authentifié
     return !!localStorage.getItem('token');
+  }
+
+  getUserData(): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('Token non disponible');
+      return of(null);
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    console.log('En-têtes de la requête:', headers); // Ajouter ce log
+
+    return this.http.get(`${this.apiUrl}/user`, { headers }).pipe(
+      tap(data => console.log('Données récupérées:', data)),
+      catchError(error => {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+        return of(null);
+      })
+    );
   }
 }
