@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-center">
-    <h1 class="m-5">Liste des utilisateurs</h1>
+  <h1 class="m-5">Liste des utilisateurs</h1>
 </div>
 <div class="d-flex justify-content-center">
-    <ul class="m-1">
-        <li>
-            @for(user of users$ | async;track $index){
-            <app-user-item [user]="user"></app-user-item>
-
-            <button (click)="goToDeletePage(user.id)">Delete</button>}
-        </li>
-    </ul>
+  <ul class="m-1">
+    @for(user of users$ | async; track $index) {
+      <li>
+        <app-user-item [user]="user"></app-user-item>
+        <button (click)="goToDeletePage(user.id)">Delete</button>
+      </li>
+    }
+  </ul>
 </div>

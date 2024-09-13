@@ -1,32 +1,29 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { environment } from '../../environments/environment';
-
+import { catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = environment.apiURL+"/user";
+  private apiUrl = environment.apiURL+'/user';
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      
-      })
-    };
-    return this.http.get<User[]>(this.apiUrl, options).pipe(
-      catchError(error => {
-        console.error('Erreur lors de la récupération des utilisateurs', error);
-        return of([]);
-      })
-    );
-  }
+
+
+ // Méthode pour récupérer les utilisateurs
+ getUsers(): Observable<User[]> {
+  return this.http.get<User[]>(this.apiUrl).pipe(
+    catchError(error => {
+      console.error('Erreur lors de la récupération des utilisateurs', error);
+      return of([]); // Retourne un tableau vide en cas d'erreur
+    })
+  );
+}
+
 
   getUserById(id: number): Observable<User | null> {
     return this.http.get<User>(`${this.apiUrl}/${id}`).pipe(
@@ -46,19 +43,16 @@ export class UserService {
     );
   }
 
-  deleteUser(Id: number): Observable<void> {
-    const url = `${this.apiUrl}/${Id}`;
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-
+  deleteUser(id: number, options?: { headers?: HttpHeaders }): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url, options).pipe(
-      catchError(error => {
-        console.error('Error deleting user', error);
-        return throwError(() => new Error('Failed to delete user.'));
-      })
+      catchError(this.handleError<void>('deleteUser'))
     );
+  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return throwError(() => new Error(`${operation} failed: ${error.message}`));
+    };
   }
 }
