@@ -1,6 +1,5 @@
 import { Brand } from './brand.model';
 import { Category } from './category.model';
-import { User } from './user.model';
 import { VehicleModel } from './vehicleModel.model';
 
 export interface Vehicle {
@@ -10,5 +9,4 @@ export interface Vehicle {
   brand: Brand;
   model: VehicleModel;
   category: Category;
-  drivers: User[];
 }

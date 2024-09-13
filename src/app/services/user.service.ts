@@ -13,6 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
 
+
  // Méthode pour récupérer les utilisateurs
  getUsers(): Observable<User[]> {
   return this.http.get<User[]>(this.apiUrl).pipe(
@@ -23,8 +24,9 @@ export class UserService {
   );
 }
 
+
   getUserById(id: number): Observable<User | null> {
-    return this.http.get<User>(`${this.apiUrl}${id}`).pipe(
+    return this.http.get<User>(`${this.apiUrl}/${id}`).pipe(
       catchError(error => {
         console.error(`Erreur lors de la récupération de l'utilisateur avec ID ${id}`, error);
         return of(null);
