@@ -26,7 +26,7 @@ export class BookingAddComponent {
       this.sub.push(
         this.bookingService
           .addBooking(newBooking)
-          .subscribe(() => this.router.navigate(['Bookings']))
+          .subscribe(() => this.router.navigate(['./bookings']))
       );
     }
   }

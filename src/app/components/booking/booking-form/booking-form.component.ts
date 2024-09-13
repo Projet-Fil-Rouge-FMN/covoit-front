@@ -57,34 +57,31 @@ export class BookingFormComponent {
     // Abonnement pour récupérer le driver
     this.userService
       .getUserById(this.BookingForm.value.driver!)
-      .subscribe((driver: User) => {
-        // Abonnement pour récupérer le serviceVehicle
-        this.serviceVehicleService
-          .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
-          .subscribe((serviceVehicle: ServiceVehicle) => {
-            // Création de l'objet booking après avoir obtenu les données
-            const booking: Booking = {
-              id: this.defautBooking?.id || 0,
-              startTime: this.BookingForm.value.startTime || '',
-              endTime: this.BookingForm.value.endTime || '',
-              driver: driver || { id: 0, name: 'Default Name' },
-              serviceVehicle: serviceVehicle || {
-                id: 0,
-                registration: '',
-                nbSeat: 0,
-                brand: { id: 0, name: '' },
-                model: { id: 0, name: '' },
-                category: { id: 0, name: '' },
-                state: '',
-                picture: '',
-                motorization: '',
-                co2Km: 0,
-              },
-            };
+      .subscribe((driver: User | null) => {
+        if (driver) {
+          // Le driver est bien un utilisateur valide
+          this.serviceVehicleService
+            .getServiceVehicleById(this.BookingForm.value.serviceVehicle!)
+            .subscribe((serviceVehicle: ServiceVehicle | null) => {
+              if (serviceVehicle) {
+                // Si le serviceVehicle est valide
+                const booking: Booking = {
+                  id: this.defautBooking?.id || 0,
+                  startTime: this.BookingForm.value.startTime || '',
+                  endTime: this.BookingForm.value.endTime || '',
+                  driver: driver, // On utilise le driver récupéré
+                  serviceVehicle: serviceVehicle, // On utilise le serviceVehicle récupéré
+                };
 
-            // Émission de l'événement onSubmit avec le booking
-            this.onSubmit.emit(booking);
-          });
+                // Émission de l'événement onSubmit avec le booking
+                this.onSubmit.emit(booking);
+              } else {
+                console.error('Service vehicle not found');
+              }
+            });
+        } else {
+          console.error('User not found');
+        }
       });
   }
 }
