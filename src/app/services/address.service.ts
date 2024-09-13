@@ -9,19 +9,22 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AddressService {
-  private apiUrl = environment.apiURL+'/address';
+  private apiUrl = environment.apiURL + '/address';
 
   constructor(private http: HttpClient) {}
 
   getAddresses(): Observable<Address[]> {
     return this.http.get<Address[]>(this.apiUrl);
   }
+
+  getAddressById(id: Number): Observable<Address> {
+    return this.http.get<Address>(this.apiUrl + '/' + id);
+  }
+
   addAddress({ id, ...address }: Address): Observable<void> {
     const newAddress = {
       ...address,
     };
-    console.log("try to add address");
-    console.log(newAddress)
     return this.http.post<void>(this.apiUrl, newAddress);
   }
 }

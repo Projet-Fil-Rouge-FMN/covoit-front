@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class BrandService {
-  private apiUrl = environment.apiURL+"/brands";
+  private apiUrl = environment.apiURL + '/brands';
 
   constructor(private http: HttpClient) {}
 
@@ -16,11 +16,15 @@ export class BrandService {
     return this.http.get<Brand[]>(this.apiUrl);
   }
 
+  getBrandById(id: Number): Observable<Brand> {
+    return this.http.get<Brand>(this.apiUrl + '/' + id);
+  }
+
   addBrand({ id, ...brand }: Brand): Observable<void> {
     const newBrand = {
       ...brand,
     };
-    console.log(newBrand)
+    console.log(newBrand);
     return this.http.post<void>(this.apiUrl, newBrand);
   }
 }
