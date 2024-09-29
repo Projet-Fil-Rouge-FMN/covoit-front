@@ -46,9 +46,13 @@ export class UserService {
   deleteUser(id: number, options?: { headers?: HttpHeaders }): Observable<void> {
     const url = `${this.apiUrl}/delete/${id}`;
     return this.http.delete<void>(url, options).pipe(
-      catchError(this.handleError<void>('deleteUser'))
+        catchError(error => {
+            console.error('Error deleting user:', error);
+            return throwError(() => new Error('Failed to delete user'));
+        })
     );
-  }
+}
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

@@ -10,7 +10,7 @@ import { AddressAddComponent } from './components/address/address-add/address-ad
 import { BookingListComponent } from './components/booking/booking-list/booking-list.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
-import { UserDeleteComponent } from './components/user-delete-component/user-delete-component.component';
+import { UserDeleteComponent } from './components/user/user-delete/user-delete-component';
 export const routes: Routes = [
   { path: 'user', component: UserListComponent },
   { path: 'vehicle', component: VehicleListComponent },

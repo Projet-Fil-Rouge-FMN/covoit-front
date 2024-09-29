@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,8 @@ import { throwError } from 'rxjs';
   selector: 'app-user-delete-component',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './user-delete-component.component.html',
-  styleUrls: ['./user-delete-component.component.css']
+  templateUrl: './user-delete-component.html',
+  styleUrls: ['./user-delete-component.css']
 })
 export class UserDeleteComponent implements OnInit {
   private static readonly ERROR_ID_MISSING = 'ID parameter is missing';
@@ -32,7 +32,7 @@ export class UserDeleteComponent implements OnInit {
         const idParam = params.get('id');
         if (!idParam || isNaN(Number(idParam))) {
           console.error(UserDeleteComponent.ERROR_ID_MISSING);
-          this.router.navigate(['/users']);  // Retour à la liste des utilisateurs en cas d'erreur
+          this.router.navigate(['/user']);  // Retour à la liste des utilisateurs en cas d'erreur
           return;
         }
         this.userId = Number(idParam);
@@ -52,22 +52,23 @@ export class UserDeleteComponent implements OnInit {
       this.userService.deleteUser(this.userId).pipe(
         tap(() => {
           console.log('User deletion successful');
-          this.router.navigate(['/users']);  // Redirige vers la liste des utilisateurs après la suppression
+          this.router.navigate(['/user']);
         }),
-        catchError(error => {
-          console.error('Error deleting user:', error);
-          let errorMessage = 'Failed to delete user';
-          if (error.status === 404) {
-            errorMessage += '. User not found.';
-          } else if (error.status === 401) {
-            errorMessage += '. Unauthorized.';
-          } else {
-            errorMessage += '. An unexpected error occurred.';
-          }
-          alert(errorMessage);
-          return throwError(() => new Error(errorMessage));
-        })
+        catchError(error => this.handleError(error))
       ).subscribe();
     }
+  }
+  private handleError(error: any) {
+    console.error('Error deleting user:', error);
+    let errorMessage = 'Failed to delete user';
+    if (error.status === 404) {
+      errorMessage += '. User not found.';
+    } else if (error.status === 401) {
+      errorMessage += '. Unauthorized.';
+    } else {
+      errorMessage += '. An unexpected error occurred.';
+    }
+    alert(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }
