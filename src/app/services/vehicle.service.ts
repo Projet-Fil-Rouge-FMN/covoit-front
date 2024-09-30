@@ -8,11 +8,19 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class VehicleService {
-  private apiUrl = environment.apiURL+"/vehicles";
+  private apiUrl = environment.apiURL + '/vehicles';
 
   constructor(private http: HttpClient) {}
 
   getVehicles(): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(this.apiUrl);
+  }
+
+  getVehicleById(id: Number): Observable<Vehicle> {
+    return this.http.get<Vehicle>(this.apiUrl + '/' + id);
+  }
+  addVehicle({ id, ...vehicle }: Vehicle): Observable<void> {
+    const newVehicle = { ...vehicle };
+    return this.http.post<void>(this.apiUrl, newVehicle);
   }
 }

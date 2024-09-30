@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class VehicleModelService {
-  private apiUrl = environment.apiURL+"/models";
+  private apiUrl = environment.apiURL + '/models';
 
   constructor(private http: HttpClient) {}
 
@@ -16,9 +16,13 @@ export class VehicleModelService {
     return this.http.get<VehicleModel[]>(this.apiUrl);
   }
 
-  addVehicleModel({id, ...vehicleModel}:VehicleModel):Observable<void> {
+  getModelById(id: Number): Observable<VehicleModel> {
+    return this.http.get<VehicleModel>(this.apiUrl + '/' + id);
+  }
+
+  addVehicleModel({ id, ...vehicleModel }: VehicleModel): Observable<void> {
     const newVehicleModel = {
-      ...vehicleModel
+      ...vehicleModel,
     };
     return this.http.post<void>(this.apiUrl, newVehicleModel);
   }
