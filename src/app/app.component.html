@@ -26,10 +26,28 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Véhicules de service </a>
+            <ul class="dropdown-menu">
+              <li><a [routerLink]="['/service-vehicle']" class="dropdown-item">Liste des véhicules de service</a></li>
+              <li><a [routerLink]="['/add-service-vehicle']" class=" dropdown-item">Ajouter un véhicule de service</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Adresses </a>
             <ul class="dropdown-menu">
               <li><a [routerLink]="['/address']" class="dropdown-item disabled">Liste des adresses</a></li>
               <li><a [routerLink]="['/add-address']" class="dropdown-item">Ajouter une adresse </a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Réservations </a>
+            <ul class="dropdown-menu">
+              <li><a [routerLink]="['/booking']" class="dropdown-item">Liste des réservations</a></li>
+              <li><a [routerLink]="['/add-booking']" class=" dropdown-item">Ajouter une réservation</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

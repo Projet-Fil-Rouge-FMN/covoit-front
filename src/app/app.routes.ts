@@ -11,12 +11,16 @@ import { BookingListComponent } from './components/booking/booking-list/booking-
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 import { UserDeleteComponent } from './components/user-delete-component/user-delete-component.component';
+import { ServiceVehicleAddComponent } from './components/service-vehicle/service-vehicle-add/service-vehicle-add.component';
+import { BookingAddComponent } from './components/booking/booking-add/booking-add.component';
 export const routes: Routes = [
   { path: 'user', component: UserListComponent },
   { path: 'vehicle', component: VehicleListComponent },
   { path: 'service-vehicle', component: ServiceVehicleListComponent },
+  { path: 'add-service-vehicle', component: ServiceVehicleAddComponent },
   { path: 'route', component: RouteListComponent },
   { path: 'booking', component: BookingListComponent },
+  { path: 'add-booking', component: BookingAddComponent },
   { path: 'add-vehicleModel', component: VehicleModelAddComponent },
   { path: 'brands', component: BrandListComponent },
   { path: 'add-brand', component: BrandAddComponent },
